@@ -41,7 +41,7 @@ Parameters:
     Default: 11
   LambdaLayers:
     Type: CommaDelimitedList
-    Default: "arn:aws:lambda:ap-southeast-1:553035198032:layer:git-lambda2:8,arn:aws:lambda:ap-southeast-1:187002341337:layer:aws-sdk-java:4,arn:aws:lambda:ap-southeast-1:187002341337:layer:ggp-config-gocheckin:1"
+    Default: "arn:aws:lambda:ap-northeast-1:553035198032:layer:git-lambda2:8,arn:aws:lambda:ap-northeast-1:576990234813:layer:aws-sdk-java:2,arn:aws:lambda:ap-northeast-1:576990234813:layer:ggp-config-gocheckin:4"
     NoEcho: true
 ```
 
@@ -52,7 +52,7 @@ $ ./launch-lambda-stack-for-ggp.sh <my-bucket> <stack-name> <aws-sdk-java-versio
 ```
 
 ```
-$ ./launch-lambda-stack-for-ggp.sh gocheckin-edge-ap-northeast-1 ggp-lambda-support-java11-stack 2.17.291
+$ ./launch-lambda-stack-for-ggp.sh ggp-edge-ap-northeast-1 ggp-lambda-support-java11-stack 2.21.29
 ```
 
 
