@@ -697,7 +697,7 @@ public class BasicFunctionHelper implements FunctionHelper {
 
     @Override
     public Predicate<FunctionConf> getPython3Predicate() {
-        return functionConf -> functionConf.getLanguage().equals(Language.PYTHON3_7);
+        return functionConf -> functionConf.getLanguage().equals(Language.PYTHON3_7) || functionConf.getLanguage().equals(Language.PYTHON3_8);
     }
 
     @Override
