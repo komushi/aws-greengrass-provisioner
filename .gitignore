@@ -29,3 +29,7 @@ build
 .settings/
 bin/
 lambda-support/layers/npm-layer.zip
+lambda-support/certs/
+lambda-support/config/
+lambda-support/*.outfile.txt
+

@@ -58,41 +58,28 @@ $ ./launch-lambda-stack-for-ggp.sh ggp-edge-ap-northeast-1 ggp-lambda-support-ja
 
 ## 2. Provision the greengrass group - lambda-new
 ```
-$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=seed EVENT_TYPE=Provision ./invoke-lambda-function.sh
+$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=gocheckin_seed EVENT_TYPE=Provision ./invoke-lambda-function.sh
 
-$ ./extract-from-outfile.sh seed
-```
-
-## 3. Deployment for the provisioned greengrass group - lambda-new
-```
-$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=seed EVENT_TYPE=Deploy DEPLOY_CONFIG_NAME=lambda-new ./invoke-lambda-function.sh
+$ ./extract-from-outfile.sh gocheckin_seed
 ```
 
-## 4. Provision the greengrass group - lambda-existing
+## 3. Deploy/Update to the provisioned seed greengrass group - lambda-new
 ```
-$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=shirakawa EVENT_TYPE=Provision ./invoke-lambda-function.sh
-
-$ ./extract-from-outfile.sh shirakawa
+$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=gocheckin_seed EVENT_TYPE=Deploy DEPLOY_CONFIG_NAME=lambda-new ./invoke-lambda-function.sh
 ```
 
-## 5. Deployment for the provisioned greengrass group - lambda-existing
+## 4. Deploy to the provisioned greengrass group - lambda-existing
 ```
-$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=shirakawa EVENT_TYPE=Deploy DEPLOY_CONFIG_NAME=lambda-existing ./invoke-lambda-function.sh
-```
-
-## 6. Update the lambda by specifying an existing group name - lambda-new
-```
-$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=seed EVENT_TYPE=Deploy DEPLOY_CONFIG_NAME=lambda-new ./invoke-lambda-function.sh
+$ STACK_NAME=ggp-lambda-support-java11-stack GROUP_NAME=minato EVENT_TYPE=Deploy DEPLOY_CONFIG_NAME=lambda-existing ./invoke-lambda-function.sh
 ```
 
 
 ## Reference
-### 1. aws-sdk-java-v2 layer to make the fat jar small enough for lambda function
+### 1. aws-sdk-java-v2 layer to make the fat jar small enough for aws-greengrass-provisioner's lambda function
 https://github.com/komushi/layer-aws-sdk-java
 
-### 2. aws-sdk-java-v2 layer to make the fat jar small enough for lambda function
-https://github.com/komushi/layer-ggp-config
+### 2. git-lambda-layer to allow to use git and ssh binaries for aws-greengrass-provisioner's lambda function
+https://github.com/lambci/git-lambda-layer
 
-### 3. optional npm-layer to enable node.js function for lambda-support
-https://github.com/sambaiz/npm-lambda-layer
-
+### 3. layer-ggp-config-v2 layer to save the ggp function definitions to be deployed - both new functions from github or existing lambda functions
+https://github.com/komushi/layer-ggp-config-v2
